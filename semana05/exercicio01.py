@@ -8,5 +8,5 @@ fatorB = 1
 produto = fatorA
 while (fatorB <= 10):
 	print(f"{fatorA} x {fatorB} = {produto}")
-	fatorA += 1
-	produto += fatorB
+	produto += fatorA
+	fatorB += 1

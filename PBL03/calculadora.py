@@ -1,10 +1,10 @@
 '''
-	Objetivo: Implementar uma calculadora em Python que possa realizar as quatro
-	operações básicas (adição, subtração, multiplicação e divisão) através de um menu de
-	opções. O usuário deve informar a operação desejada, e a calculadora realizará
-	operações com apenas 2 valores. O programa deve permitir que o usuário execute
-	quantas operações quiser, sem que a execução seja interrompida. A opção 0 deverá ser
-	selecionada para encerrar o programa.
+Objetivo: Implementar uma calculadora em Python que possa realizar as quatro
+operações básicas (adição, subtração, multiplicação e divisão) através de um menu de
+opções. O usuário deve informar a operação desejada, e a calculadora realizará
+operações com apenas 2 valores. O programa deve permitir que o usuário execute
+quantas operações quiser, sem que a execução seja interrompida. A opção 0 deverá ser
+selecionada para encerrar o programa.
 '''
 
 def selecionarOperacao():

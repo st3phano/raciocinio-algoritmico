@@ -1,1 +1,1 @@
-# raciocinio-algoritmico
+Esse repositório armazena minhas respostas para as atividades da matéria de Raciocínio Algoritmico na PUCPR

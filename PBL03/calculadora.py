@@ -7,18 +7,34 @@ quantas operações quiser, sem que a execução seja interrompida. A opção 0 
 selecionada para encerrar o programa.
 '''
 
-def selecionarOperacao(operacoes):
+def selecionarOperador(operadores):
 	# Imprime um menu com todas as operações disponíveis
 	print("----| Menu Calculadora |----")
-	for nome, operacao in operacoes.items():
-			print(f"{operacao} : {nome}")
+	for nome, operador in operadores.items():
+			print(f"{operador} : {nome}")
 
 	# Impede que o usuário digite uma operação inexistente
-	operacao = input("Digite a operação desejada: ")
-	while (operacao not in operacoes.values()):
-		operacao = input("Operação inválida!\nTente novamente: ")
+	operador = input("Digite a operação desejada: ")
+	while (operador not in operadores.values()):
+		operador = input("Operação inválida!\nTente novamente: ")
 
-	return operacao
+	return operador
+
+def realizarOperacao(valores, operador):
+	resultado = valores[0]
+
+	funcoesOperadoras = {'+': lambda x, y: x + y,
+								'-': lambda x, y: x - y,
+								'*': lambda x, y: x * y,
+								'/': lambda x, y: (x / y) if (y != 0) else
+														float("inf") if (x > 0) else
+														float ("-inf")}
+	funcaoOperadora = funcoesOperadoras[operador]
+	# Faz 'resultado [operador] valor' para todos os valores restantes na lista
+	for valor in valores[1:]:
+		resultado = funcaoOperadora(resultado, valor)
+
+	return resultado
 
 def mostrarResultado(valores, quantidadeValores, operacao, resultado):
 	for i in range(quantidadeValores - 1):
@@ -27,9 +43,14 @@ def mostrarResultado(valores, quantidadeValores, operacao, resultado):
 
 ###########################################################################################
 
-operacoes = {"somar": '+', "subtrair": '-', "multiplicar": '*', "dividir": '/', "sair": '0'}
+operadores = {"somar": '+',
+				 "subtrair": '-',
+				 "multiplicar": '*',
+				 "dividir": '/',
+				 "sair": '0'}
+
 valores = []
-while ((operacao := selecionarOperacao(operacoes)) != '0'):
+while ((operador := selecionarOperador(operadores)) != '0'):
 	quantidadeValores = int(input("Quantos valores serão utilizados na operação? "))
 	# Impede que o usuário digite uma quantidade de valores < 1
 	while (quantidadeValores < 1):
@@ -39,31 +60,10 @@ while ((operacao := selecionarOperacao(operacoes)) != '0'):
 	for i in range(quantidadeValores):
 		valores.append(float(input(f"Digite o {i + 1} valor: ")))
 
-	# Realiza a operação escolhida
-	resultadoValido = True
-	resultado = valores[0]
-	if (operacao == '+'):
-		for i in range(1, quantidadeValores):
-			resultado += valores[i]
-	elif (operacao == '-'):
-		for i in range(1, quantidadeValores):
-			resultado -= valores[i]
-	elif (operacao == '*'):
-		for i in range(1, quantidadeValores):
-			resultado *= valores[i]
-	elif (operacao == '/'):
-		for i in range(1, quantidadeValores):
-			if (valores[i] == 0):
-				print("A divisão por 0 foi ignorada!")
-			else:
-				resultado /= valores[i]
-	else:
-		print("Operação inválida!")
-		resultadoValido = False
-
-	if (resultadoValido):
-		mostrarResultado(valores, quantidadeValores, operacao, resultado)
+	resultado = realizarOperacao(valores, operador)
+	mostrarResultado(valores, quantidadeValores, operador, resultado)
 
 	valores.clear()
+	print('\n')
 
 print("Encerrando a calculadora...")

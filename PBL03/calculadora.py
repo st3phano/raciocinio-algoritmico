@@ -42,9 +42,9 @@ def realizarOperacao(valores, operador):
 
 	return resultado
 
-def mostrarResultado(valores, quantidadeValores, operacao, resultado):
-	for i in range(quantidadeValores - 1):
-		print(f"{valores[i]} {operacao} ", end = "")
+def mostrarResultado(valores, operacao, resultado):
+	for valor in valores[:-1]:
+		print(f"{valor} {operacao}", end = ' ')
 	print(f"{valores[-1]} = {resultado:.2f}")
 
 ###########################################################################################
@@ -61,7 +61,7 @@ while ((operador := selecionarOperador()) != '0'):
 		valores.append(float(input(f"Digite o {i + 1} valor: ")))
 
 	resultado = realizarOperacao(valores, operador)
-	mostrarResultado(valores, quantidadeValores, operador, resultado)
+	mostrarResultado(valores, operador, resultado)
 
 	valores.clear()
 	print('\n')

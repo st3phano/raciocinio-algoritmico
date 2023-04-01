@@ -27,8 +27,8 @@ def realizarOperacao(valores, operador):
 								'-': lambda x, y: x - y,
 								'*': lambda x, y: x * y,
 								'/': lambda x, y: (x / y) if (y != 0) else
-														float("inf") if (x > 0) else
-														float ("-inf")}
+														float("-inf") if (x < 0) else
+														float("inf")}
 	funcaoOperadora = funcoesOperadoras[operador]
 	# Faz 'resultado [operador] valor' para todos os valores restantes na lista
 	for valor in valores[1:]:

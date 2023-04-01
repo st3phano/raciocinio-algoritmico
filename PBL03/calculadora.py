@@ -7,7 +7,13 @@ quantas operações quiser, sem que a execução seja interrompida. A opção 0 
 selecionada para encerrar o programa.
 '''
 
-def selecionarOperador(operadores):
+def selecionarOperador():
+	operadores = {"somar": '+',
+					  "subtrair": '-',
+					  "multiplicar": '*',
+					  "dividir": '/',
+					  "sair": '0'}
+
 	# Imprime um menu com todas as operações disponíveis
 	print("----| Menu Calculadora |----")
 	for nome, operador in operadores.items():
@@ -43,14 +49,8 @@ def mostrarResultado(valores, quantidadeValores, operacao, resultado):
 
 ###########################################################################################
 
-operadores = {"somar": '+',
-				 "subtrair": '-',
-				 "multiplicar": '*',
-				 "dividir": '/',
-				 "sair": '0'}
-
 valores = []
-while ((operador := selecionarOperador(operadores)) != '0'):
+while ((operador := selecionarOperador()) != '0'):
 	quantidadeValores = int(input("Quantos valores serão utilizados na operação? "))
 	# Impede que o usuário digite uma quantidade de valores < 1
 	while (quantidadeValores < 1):

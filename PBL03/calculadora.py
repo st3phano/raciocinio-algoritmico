@@ -31,7 +31,7 @@ def mostrarResultado(valores, quantidadeValores, operacao, resultado):
 valores = []
 while ((operacao := selecionarOperacao()) != '0'):
 	# Lê quantos e quais valores o usuário deseja
-	quantidadeValores = int(input(f"Quantos valores deseja '{operacao}'? "))
+	quantidadeValores = int(input("Quantos valores serão utilizados na operação? "))
 	for i in range(quantidadeValores):
 		valores.append(float(input(f"Digite o {i + 1} valor: ")))
 

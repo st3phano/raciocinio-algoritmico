@@ -5,18 +5,18 @@ Faça um programa que peça um número inteiro entre 1 e 7 e informe o dia da se
 numeroInt = int(input("Digite um número inteiro entre 1 e 7: "))
 
 if (numeroInt == 1):
-	print("Domingo")
+   print("Domingo")
 elif (numeroInt == 2):
-	print("Segunda")
+   print("Segunda")
 elif (numeroInt == 3):
-	print("Terça")
+   print("Terça")
 elif (numeroInt == 4):
-	print("Quarta")
+   print("Quarta")
 elif (numeroInt == 5):
-	print("Quinta")
+   print("Quinta")
 elif (numeroInt == 6):
-	print("Sexta")
+   print("Sexta")
 elif (numeroInt == 7):
-	print("Sábado")
+   print("Sábado")
 else:
-	print("Número inválido")
+   print("Número inválido")

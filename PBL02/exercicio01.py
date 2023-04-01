@@ -5,6 +5,6 @@ Faça um programa que peça um número inteiro e determine se ele é par ou ímp
 numeroInt = int(input("Digite um número inteiro: "))
 
 if (numeroInt % 2 == 0):
-	print("Par")
+   print("Par")
 else:
-	print("Impar")
+   print("Impar")

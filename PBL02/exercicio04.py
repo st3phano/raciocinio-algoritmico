@@ -6,6 +6,6 @@ idadePessoa = int(print("Digite sua idade: "))
 
 IDADE_MINIMA_VOTAR = 16
 if (idadePessoa < IDADE_MINIMA_VOTAR):
-	print("Você não pode votar")
+   print("Você não pode votar")
 else:
-	print("Você pode votar")
+   print("Você pode votar")

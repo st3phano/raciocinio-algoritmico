@@ -9,8 +9,8 @@ alturaMetros = float(print("Digite sua altura em metros: "))
 imc = pesoKg / (alturaMetros ** 2)
 
 if (imc < 18.5):
-	print("Abaixo do peso ideal")
+   print("Abaixo do peso ideal")
 elif (imc < 25.0):
-	print("No peso ideal")
+   print("No peso ideal")
 else:
-	print("Acima do peso")
+   print("Acima do peso")

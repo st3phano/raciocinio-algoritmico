@@ -8,11 +8,11 @@ primo = True
 divisor = 2
 divisorMaximo = numeroInt ** 0.5
 while (primo and (divisor <= divisorMaximo)):
-	if (numeroInt % divisor == 0):
-		primo = False
-	divisor += 1
+   if (numeroInt % divisor == 0):
+      primo = False
+   divisor += 1
 
 if (primo):
-	print("O número é primo")
+   print("O número é primo")
 else:
-	print("O número nâo é primo")
+   print("O número nâo é primo")

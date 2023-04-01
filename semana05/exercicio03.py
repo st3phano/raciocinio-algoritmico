@@ -8,11 +8,11 @@ somaNumeros = 0
 quantidadeNumeros = 0
 lerNumero = lambda: float(input("Digite um número (-1 para encerrar): "))
 while ((numeroAtual := lerNumero()) != -1):
-	somaNumeros += numeroAtual
-	quantidadeNumeros += 1
+   somaNumeros += numeroAtual
+   quantidadeNumeros += 1
 
 if (quantidadeNumeros > 0):
-	mediaNumeros = somaNumeros / quantidadeNumeros
+   mediaNumeros = somaNumeros / quantidadeNumeros
 else:
-	mediaNumeros = 0
+   mediaNumeros = 0
 print(f"A média dos números fornecidos é: {mediaNumeros}")

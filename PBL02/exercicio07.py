@@ -8,15 +8,15 @@ notasProvas = []
 QUANTIDADE_PROVAS = 3
 somatorioNotasProvas = 0
 for i in range(QUANTIDADE_PROVAS):
-	notasProvas.append(float(input(f"Digite a nota da prova {i + 1}: ")))
-	somatorioNotasProvas += notasProvas[i]
+   notasProvas.append(float(input(f"Digite a nota da prova {i + 1}: ")))
+   somatorioNotasProvas += notasProvas[i]
 
 mediaNotasProvas = somatorioNotasProvas / QUANTIDADE_PROVAS
 MEDIA_MINIMA_APROVACAO = 7.0
 MEDIA_MINIMA_RECUPERACAO = 5.0
 if (mediaNotasProvas < MEDIA_MINIMA_RECUPERACAO):
-	print("Reprovado")
+   print("Reprovado")
 elif (mediaNotasProvas < MEDIA_MINIMA_APROVACAO):
-	print("Recuperação")
+   print("Recuperação")
 else:
-	print("Aprovado")
+   print("Aprovado")

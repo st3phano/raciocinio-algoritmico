@@ -5,8 +5,8 @@ Faça um programa que peça um número inteiro e determine se ele é positivo ou
 numeroInt = int(input("Digite um número inteiro: "))
 
 if (numeroInt > 0):
-	print("Positivo")
+   print("Positivo")
 elif (numeroInt < 0):
-	print("Negativo")
+   print("Negativo")
 else:
-	print("Zero")
+   print("Zero")

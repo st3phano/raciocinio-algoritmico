@@ -1,1 +1,0 @@
-Esse repositório armazena minhas respostas para as atividades da matéria de Raciocínio Algorítmico na PUCPR

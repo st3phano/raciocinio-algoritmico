@@ -26,7 +26,7 @@ class Jogo:
       while (modalidade not in [m.value for m in ModalidadesJogo]):
          modalidade = input("Modalidade inválida! Escolha uma entre as modalidades disponíveis: ")
 
-      return modalidade
+      return ModalidadesJogo(modalidade)
 
 
    def definirVencedor(self, jogador1, jogador2):
@@ -44,10 +44,10 @@ class Jogo:
    def rodar(self):
       modalidade = self.escolherModalidade()
 
-      if (modalidade == ModalidadesJogo.HUMANOvsHUMANO.value):
+      if (modalidade == ModalidadesJogo.HUMANOvsHUMANO):
          jogador1 = Humano()
          jogador2 = Humano()
-      elif (modalidade == ModalidadesJogo.HUMANOvsCOMPUTADOR.value):
+      elif (modalidade == ModalidadesJogo.HUMANOvsCOMPUTADOR):
          jogador1 = Humano()
          jogador2 = Computador()
       else: # ModalidadesDeJogo.COMPUTADORvsCOMPUTADOR
@@ -59,18 +59,22 @@ class Jogo:
       while (continuarJogando != '0'):
          numeroPartida += 1
          print(f"Partida {numeroPartida} de Jokenpo:\n")
+         sleep(1)
          
          if (isinstance(jogador1, Humano)):
             print(" - Vez do jogador 1 -")
+            sleep(1)
          jogador1.escolherJogada()
          print(f"Jogador 1 escolheu {jogador1.jogada.name}")
+         sleep(1)
 
          if (isinstance(jogador2, Humano)):
             print(" - Vez do jogador 2 -")
+            sleep(1)
          jogador2.escolherJogada()
          print(f"Jogador 2 escolheu {jogador2.jogada.name}")
-
          sleep(1)
+
          vencedor = self.definirVencedor(jogador1, jogador2)
          if (vencedor == 1):
             print(" - Jogador 1 venceu! -")
@@ -80,13 +84,15 @@ class Jogo:
             jogador2.numeroVitorias += 1
          else:
             print(" - Empate! -")
-
          sleep(1)
+
          continuarJogando = input("Deseja jogar mais uma partida?\n"
                                   "0 - não\n"
                                   "1 - sim\n"
                                   ": ")
          print()
+         sleep(1)
 
       print(f"Jogador 1 venceu {jogador1.numeroVitorias} partidas!")
+      sleep(1)
       print(f"Jogador 2 venceu {jogador2.numeroVitorias} partidas!")

@@ -41,6 +41,34 @@ class Jogo:
          return 2
 
 
+   def jogarPartida(self, numeroPartida, jogador1, jogador2):
+      print(f"Partida {numeroPartida} de Jokenpo:\n")
+      sleep(1)
+
+      print(" - Vez do jogador 1 -")
+      sleep(1)
+      jogador1.escolherJogada()
+      print(f"Jogador 1 escolheu {jogador1.jogada.name}")
+      sleep(1)
+
+      print(" - Vez do jogador 2 -")
+      sleep(1)
+      jogador2.escolherJogada()
+      print(f"Jogador 2 escolheu {jogador2.jogada.name}")
+      sleep(1)
+
+      vencedor = self.definirVencedor(jogador1, jogador2)
+      if (vencedor == 1):
+         print(" - Jogador 1 venceu! -")
+         jogador1.numeroVitorias += 1
+      elif (vencedor == 2):
+         print(" - Jogador 2 venceu! -")
+         jogador2.numeroVitorias += 1
+      else:
+         print(" - Empate! -")
+      sleep(1)
+
+
    def rodar(self):
       modalidade = self.escolherModalidade()
 
@@ -58,36 +86,8 @@ class Jogo:
       continuarJogando = '1'
       while (continuarJogando != '0'):
          numeroPartida += 1
-         print(f"Partida {numeroPartida} de Jokenpo:\n")
-         sleep(1)
-         
-         print(" - Vez do jogador 1 -")
-         sleep(1)
-         jogador1.escolherJogada()
-         print(f"Jogador 1 escolheu {jogador1.jogada.name}")
-         sleep(1)
-
-         print(" - Vez do jogador 2 -")
-         sleep(1)
-         jogador2.escolherJogada()
-         print(f"Jogador 2 escolheu {jogador2.jogada.name}")
-         sleep(1)
-
-         vencedor = self.definirVencedor(jogador1, jogador2)
-         if (vencedor == 1):
-            print(" - Jogador 1 venceu! -")
-            jogador1.numeroVitorias += 1
-         elif (vencedor == 2):
-            print(" - Jogador 2 venceu! -")
-            jogador2.numeroVitorias += 1
-         else:
-            print(" - Empate! -")
-         sleep(1)
-
-         continuarJogando = input("Deseja jogar mais uma partida?\n"
-                                  "0 - não\n"
-                                  "1 - sim\n"
-                                  ": ")
+         self.jogarPartida(numeroPartida, jogador1, jogador2)
+         continuarJogando = input("Deseja jogar mais uma partida? (0 - não / 1 - sim)\n: ")
          print()
          sleep(1)
 

@@ -61,16 +61,14 @@ class Jogo:
          print(f"Partida {numeroPartida} de Jokenpo:\n")
          sleep(1)
          
-         if (isinstance(jogador1, Humano)):
-            print(" - Vez do jogador 1 -")
-            sleep(1)
+         print(" - Vez do jogador 1 -")
+         sleep(1)
          jogador1.escolherJogada()
          print(f"Jogador 1 escolheu {jogador1.jogada.name}")
          sleep(1)
 
-         if (isinstance(jogador2, Humano)):
-            print(" - Vez do jogador 2 -")
-            sleep(1)
+         print(" - Vez do jogador 2 -")
+         sleep(1)
          jogador2.escolherJogada()
          print(f"Jogador 2 escolheu {jogador2.jogada.name}")
          sleep(1)

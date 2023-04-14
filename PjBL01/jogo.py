@@ -87,10 +87,16 @@ class Jogo:
       while (continuarJogando != '0'):
          numeroPartida += 1
          self.jogarPartida(numeroPartida, jogador1, jogador2)
+
+         print(f"Jogador 1 venceu {jogador1.numeroVitorias} partidas até agora")
+         sleep(0.5)
+         print(f"Jogador 2 venceu {jogador2.numeroVitorias} partidas até agora")
+
          continuarJogando = input("Deseja jogar mais uma partida? (0 - não / 1 - sim)\n: ")
          print()
          sleep(1)
 
       print(f"Jogador 1 venceu {jogador1.numeroVitorias} partidas!")
-      sleep(1)
+      sleep(0.5)
       print(f"Jogador 2 venceu {jogador2.numeroVitorias} partidas!")
+      print("Até a próxima!")

@@ -69,7 +69,7 @@ class Jogo:
       sleep(1)
 
 
-   def rodar(self):
+   def jogar(self):
       modalidade = self.escolherModalidade()
 
       if (modalidade == ModalidadesJogo.HUMANOvsHUMANO):

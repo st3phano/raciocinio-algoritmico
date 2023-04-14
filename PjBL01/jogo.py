@@ -42,7 +42,7 @@ class Jogo:
 
 
    def jogarPartida(self, numeroPartida, jogador1, jogador2):
-      print(f"Partida {numeroPartida} de Jokenpo:\n")
+      print(f"Partida {numeroPartida} de Jokenpo:")
       sleep(1)
 
       print(" - Vez do jogador 1 -")
@@ -71,6 +71,7 @@ class Jogo:
 
    def jogar(self):
       modalidade = self.escolherModalidade()
+      print()
 
       if (modalidade == ModalidadesJogo.HUMANOvsHUMANO):
          jogador1 = Humano()

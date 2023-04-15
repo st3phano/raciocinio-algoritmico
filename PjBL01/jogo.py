@@ -73,13 +73,13 @@ class Jokenpo:
       modalidade = self.escolherModalidade()
       print()
 
-      if (modalidade == ModalidadesJogo.HUMANOvsHUMANO):
+      if (modalidade == ModalidadesJogo.HUMANO_VS_HUMANO):
          jogador1 = Humano()
          jogador2 = Humano()
-      elif (modalidade == ModalidadesJogo.HUMANOvsCOMPUTADOR):
+      elif (modalidade == ModalidadesJogo.HUMANO_VS_COMPUTADOR):
          jogador1 = Humano()
          jogador2 = Computador()
-      else: # ModalidadesDeJogo.COMPUTADORvsCOMPUTADOR
+      else:
          jogador1 = Computador()
          jogador2 = Computador()
 
@@ -98,6 +98,7 @@ class Jokenpo:
          sleep(1)
 
       print(f"Jogador 1 venceu {jogador1.numeroVitorias} partidas!")
-      sleep(0.5)
+      sleep(1)
       print(f"Jogador 2 venceu {jogador2.numeroVitorias} partidas!")
+      sleep(1)
       print("Até a próxima!")

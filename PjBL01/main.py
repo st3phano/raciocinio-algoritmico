@@ -1,4 +1,4 @@
-from jogo import Jogo
+from jogo import Jokenpo
 
-jogo = Jogo()
-jogo.jogar()
+jokenpo = Jokenpo()
+jokenpo.jogar()

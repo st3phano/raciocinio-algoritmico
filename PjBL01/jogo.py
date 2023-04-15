@@ -17,7 +17,7 @@ class ModalidadesJogo(Enum):
          print(f"{modalidade.value} - {modalidade.name}")
 
 
-class Jogo:
+class Jokenpo:
    def escolherModalidade(self):
       print("Qual modalidade deseja jogar?")
       ModalidadesJogo.imprimirModalidades()

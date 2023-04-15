@@ -6,9 +6,9 @@ from time import sleep
 
 
 class ModalidadesJogo(Enum):
-   HUMANOvsHUMANO = '1'
-   HUMANOvsCOMPUTADOR = '2'
-   COMPUTADORvsCOMPUTADOR = '3'
+   HUMANO_VS_HUMANO = '1'
+   HUMANO_VS_COMPUTADOR = '2'
+   COMPUTADOR_VS_COMPUTADOR = '3'
 
 
    @staticmethod

@@ -7,10 +7,11 @@ quantidade de valores pares e ímpares.
 pares = impares = 0
 
 QUANTIDADE_INTEIROS = 10
-print(f"Digite {QUANTIDADE_INTEIROS} valores inteiros, cada um em uma linha")
-for _ in range(QUANTIDADE_INTEIROS):
-   while not (inteiro := input(": ")).isdigit():
-      print("Valor inválido, digite um valor inteiro!")
+print(f"Digite {QUANTIDADE_INTEIROS} valores inteiros")
+for i in range(1, QUANTIDADE_INTEIROS + 1):
+   inteiro = input(f"{i}º: ")
+   while not inteiro.isdigit():
+      inteiro = input("Entrada inválida, digite um valor inteiro: ")
    
    if int(inteiro) % 2 == 0:
       pares += 1

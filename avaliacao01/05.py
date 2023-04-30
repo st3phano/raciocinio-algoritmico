@@ -10,7 +10,7 @@ QUANTIDADE_INTEIROS = 10
 print(f"Digite {QUANTIDADE_INTEIROS} valores inteiros")
 for i in range(1, QUANTIDADE_INTEIROS + 1):
    inteiro = input(f"{i}º: ")
-   while not inteiro.isdigit():
+   while not inteiro.isdecimal():
       inteiro = input("Entrada inválida, digite um valor inteiro: ")
    
    if int(inteiro) % 2 == 0:

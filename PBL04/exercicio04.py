@@ -8,7 +8,7 @@ import re
 TAMANHO_VALORES_INTEIROS = 6
 valoresInteiros = [0] * TAMANHO_VALORES_INTEIROS
 for i in range(TAMANHO_VALORES_INTEIROS):
-   valorDigitado = input(f"Digite o {i + 1} valor inteiro: ")
+   valorDigitado = input(f"Digite o {i + 1}o valor inteiro: ")
 
    # exige que o valor digitado seja inteiro
    inteiroRegex = r"-?\d+"
@@ -17,4 +17,5 @@ for i in range(TAMANHO_VALORES_INTEIROS):
    valoresInteiros[i] = int(valorDigitado)
 
 for i in range(TAMANHO_VALORES_INTEIROS - 1, -1, -1):
-   print(valoresInteiros[i])
+   print(valoresInteiros[i], end=' ')
+print()

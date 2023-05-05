@@ -12,10 +12,10 @@ valores = [0] * tamanhoValores
 for iValores in range(tamanhoValores):
    valores[iValores] = input(f"Digite o {iValores + 1}o valor: ")
 
-zeroRegex = r"0+"
+regexZero = r"0+"
 iValores = 0
 while (iValores < tamanhoValores):
-   if (re.match(zeroRegex, valores[iValores])):
+   if (re.match(regexZero, valores[iValores])):
       j = iValores + 1
       while (j < tamanhoValores):
          valores[j - 1] = valores[j]

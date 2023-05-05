@@ -17,7 +17,7 @@ personagemVida = {"guerreiro": 200, "mago": 130, "arqueiro": 100}
 print("Escolha seu personagem:")
 for personagem in personagemVida:
    print(f"- {personagem}")
-while (escolha := input(": ")) not in personagemVida:
+while ((escolha := input(": ")) not in personagemVida):
    print("Escolha inválida, tente novamente!")
 
 print(f"{escolha}s possuem {personagemVida[escolha]} pontos de vida!")

@@ -7,6 +7,7 @@ jogados e quantidade de acertos.
 '''
 
 from random import randint
+import re
 
 NUMERO_MIN_MEGA_SENA = 1
 NUMERO_MAX_MEGA_SENA = 60
@@ -21,7 +22,10 @@ numerosApostados = [0] * QUANTIDADE_NUMEROS_MEGA_SENA
 # requisita os números da aposta
 for i in range(QUANTIDADE_NUMEROS_MEGA_SENA):
    numero = input(f"Digite o {i + 1}º número de sua aposta: ")
-   while ((not numero.isdecimal()) or
+
+   # impõe que um inteiro seja digitado
+   inteiroRegex = r"-?\d*"
+   while ((re.match(inteiroRegex, numero == None)) or
           (int(numero) < NUMERO_MIN_MEGA_SENA) or
           (int(numero) > NUMERO_MAX_MEGA_SENA) or
           (int(numero) in numerosApostados)):

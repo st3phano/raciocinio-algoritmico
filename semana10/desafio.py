@@ -23,9 +23,9 @@ numerosApostados = [0] * QUANTIDADE_NUMEROS_MEGA_SENA
 for i in range(QUANTIDADE_NUMEROS_MEGA_SENA):
    numero = input(f"Digite o {i + 1}º número de sua aposta: ")
 
-   # impõe que um inteiro seja digitado
-   inteiroRegex = r"-?\d*"
-   while ((re.match(inteiroRegex, numero == None)) or
+   # impõe que um número inteiro seja digitado
+   inteiroRegex = r"-?\d+"
+   while ((re.match(inteiroRegex, numero) == None) or
           (int(numero) < NUMERO_MIN_MEGA_SENA) or
           (int(numero) > NUMERO_MAX_MEGA_SENA) or
           (int(numero) in numerosApostados)):

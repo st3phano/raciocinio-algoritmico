@@ -27,7 +27,7 @@ for i in range(QUANTIDADE_NUMEROS_MEGA_SENA):
    while ((re.fullmatch(inteiroRegex, numero) == None) or
           (int(numero) < NUMERO_MIN_MEGA_SENA) or
           (int(numero) > NUMERO_MAX_MEGA_SENA) or
-          (int(numero) in numerosApostados[:i+1])):
+          (int(numero) in numerosApostados[:i])):
       numero = input(f"Digite um número entre {NUMERO_MIN_MEGA_SENA} e {NUMERO_MAX_MEGA_SENA}"
                      " que ainda não foi digitado: ")
       

@@ -16,7 +16,7 @@ for i in range(TAMANHO_VALORES):
    if (valores[i] not in valoresVistos):
       valoresVistos[iVistos] = valores[i]
       iVistos += 1
-   else:
+   elif (valores[i] not in valoresRepetidos):
       valoresRepetidos[iRepetidos] = valores[i]
       iRepetidos += 1
 

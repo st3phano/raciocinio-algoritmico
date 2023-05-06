@@ -11,8 +11,8 @@ numerosInteiros = [0] * TAMANHO_NUMEROS_INTEIROS
 for i in range(TAMANHO_NUMEROS_INTEIROS):
    numeroDigitado = input(f"Digite o {i + 1}o número inteiro: ")
 
-   # previne entradas que não sejam número inteiros
-   regexInteiro = r"-?\d+"
+   # demanda que o número digitado seja inteiro
+   regexInteiro = r"[-+]?\d+"
    while (re.fullmatch(regexInteiro, numeroDigitado) == None):
       numeroDigitado = input("Entrada inválida! Digite um número inteiro: ")
 

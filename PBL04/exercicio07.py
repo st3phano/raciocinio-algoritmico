@@ -29,7 +29,7 @@ while (iValores < tamanhoValores):
    else:
       iValores += 1
 
-print("Valores compactado:")
+print("Valores compactado:", end=' ')
 for i in range(tamanhoValores):
-   print(valores[i],end='\t')
+   print(valores[i], end=' ')
 print()

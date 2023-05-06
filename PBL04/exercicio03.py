@@ -22,7 +22,7 @@ for i in range(tamanhoValoresInteiros):
    print(valoresInteiros[i], end=' ')
 print()
 
-# Imprima a quantidade de valores maiores que 5
+# Imprima a quantidade de valores maiores que 5.
 maioresQue5 = 0
 for i in range(tamanhoValoresInteiros):
    if (valoresInteiros[i] > 5):

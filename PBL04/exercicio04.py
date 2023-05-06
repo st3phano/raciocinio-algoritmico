@@ -12,7 +12,7 @@ for i in range(TAMANHO_VALORES_INTEIROS):
 
    # exige que o valor digitado seja inteiro
    inteiroRegex = r"-?\d+"
-   while (re.match(inteiroRegex, valorDigitado) == None):
+   while (re.fullmatch(inteiroRegex, valorDigitado) == None):
       valorDigitado = input(f"Valor inválido!\nDigite o {i + 1} valor inteiro: ")
    valoresInteiros[i] = int(valorDigitado)
 

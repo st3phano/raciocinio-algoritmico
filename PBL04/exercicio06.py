@@ -18,4 +18,12 @@ for i in range(TAMANHO_NUMEROS_INTEIROS):
 
    numerosInteiros[i] = int(numeroDigitado)
 
-print(set(numerosInteiros))
+CAPACIDADE_NUMEROS_UNICOS = TAMANHO_NUMEROS_INTEIROS
+numerosUnicos = [0] * CAPACIDADE_NUMEROS_UNICOS
+tamanhoNumerosUnicos = 0
+for numero in numerosInteiros:
+   if (numero not in numerosUnicos[:tamanhoNumerosUnicos]):
+      numerosUnicos[tamanhoNumerosUnicos] = numero
+      tamanhoNumerosUnicos += 1
+
+print(numerosUnicos[:tamanhoNumerosUnicos])

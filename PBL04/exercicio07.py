@@ -10,12 +10,17 @@ import re
 tamanhoValores = 15
 valores = [0] * tamanhoValores
 for iValores in range(tamanhoValores):
-   valores[iValores] = input(f"Digite o {iValores + 1}o valor: ")
+   valorDigitado = input(f"Digite o {iValores + 1}o valor: ")
+   
+   regexNumeroReal = r"[-+]?\d*\.?\d+?"
+   while (re.fullmatch(regexNumeroReal, valorDigitado) == None):
+      valorDigitado = input("Entrada inválida! Digite um valor real: ")
 
-regexZero = r"0+"
+   valores[iValores] = float(valorDigitado)
+
 iValores = 0
 while (iValores < tamanhoValores):
-   if (re.match(regexZero, valores[iValores])):
+   if (valores[iValores] == 0):
       j = iValores + 1
       while (j < tamanhoValores):
          valores[j - 1] = valores[j]
@@ -24,7 +29,7 @@ while (iValores < tamanhoValores):
    else:
       iValores += 1
 
-print("Valores compactado:", end=' ')
+print("Valores compactado:")
 for i in range(tamanhoValores):
-   print(valores[i],end=' ')
+   print(valores[i],end='\t')
 print()

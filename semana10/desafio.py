@@ -6,17 +6,16 @@ Ao final, o programa deve exibir os números sorteados, números
 jogados e quantidade de acertos.
 '''
 
-from random import randint
+from random import sample
 import re
 
 NUMERO_MIN_MEGA_SENA = 1
 NUMERO_MAX_MEGA_SENA = 60
 QUANTIDADE_NUMEROS_MEGA_SENA = 6
 
-numerosSorteados = [0] * QUANTIDADE_NUMEROS_MEGA_SENA
 # sorteia os números da Mega Sena
-for i in range(QUANTIDADE_NUMEROS_MEGA_SENA):
-   numerosSorteados[i] = randint(NUMERO_MIN_MEGA_SENA, NUMERO_MAX_MEGA_SENA)
+numerosMegaSena = range(NUMERO_MIN_MEGA_SENA, NUMERO_MAX_MEGA_SENA + 1)
+numerosSorteados = sample(numerosMegaSena, QUANTIDADE_NUMEROS_MEGA_SENA)
 
 numerosApostados = [0] * QUANTIDADE_NUMEROS_MEGA_SENA
 # requisita os números da aposta

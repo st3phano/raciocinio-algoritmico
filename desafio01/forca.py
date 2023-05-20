@@ -8,10 +8,10 @@ CARACTERE_OCULTACAO = '_'
 palavraEscondida = [CARACTERE_OCULTACAO] * len(palavraSorteada)
 
 letrasParaDescobrir = len(palavraSorteada)
-numeroTentativas = 2 * len(palavraSorteada)
-while (letrasParaDescobrir > 0 and numeroTentativas > 0):
-   print(f"\nTENTATIVAS RESTANTES: {numeroTentativas}")
-   numeroTentativas -= 1
+tentativasRestantes = 2 * len(palavraSorteada)
+while ((letrasParaDescobrir > 0) and (tentativasRestantes > 0)):
+   print(f"\nTENTATIVAS RESTANTES: {tentativasRestantes}")
+   tentativasRestantes -= 1
 
    print(f"Palavra:", end=' ')
    for ch in palavraEscondida:

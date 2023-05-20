@@ -11,10 +11,10 @@ palavraSorteada = random.choice(palavras)
 CARACTERE_OCULTACAO = '_'
 palavraEscondida = [CARACTERE_OCULTACAO] * len(palavraSorteada)
 
-numeroTentativas = 2 * len(palavraSorteada)
-while ((CARACTERE_OCULTACAO in palavraEscondida) and (numeroTentativas > 0)):
-   print(f"\nTENTATIVAS RESTANTES: {numeroTentativas}")
-   numeroTentativas -= 1
+tentativasRestantes = 2 * len(palavraSorteada)
+while ((CARACTERE_OCULTACAO in palavraEscondida) and (tentativasRestantes > 0)):
+   print(f"\nTENTATIVAS RESTANTES: {tentativasRestantes}")
+   tentativasRestantes -= 1
 
    print(f"Palavra: {''.join(palavraEscondida)}")
 

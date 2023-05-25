@@ -6,8 +6,8 @@ import random
 import re
 
 palavras = ["abacaxi", "bicicleta", "chocolate", "dinossauro", "elefante", "futebol", "girassol", "cadeira", "igreja", "janela"]
-
 palavraSorteada = random.choice(palavras)
+
 CARACTERE_OCULTACAO = '_'
 palavraEscondida = [CARACTERE_OCULTACAO] * len(palavraSorteada)
 

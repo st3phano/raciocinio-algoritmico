@@ -2,8 +2,8 @@ import random
 import re
 
 palavras = ["abacaxi", "bicicleta", "chocolate", "dinossauro", "elefante", "futebol", "girassol", "cadeira", "igreja", "janela"]
-
 palavraSorteada = random.choice(palavras)
+
 CARACTERE_OCULTACAO = '_'
 palavraEscondida = [CARACTERE_OCULTACAO] * len(palavraSorteada)
 
@@ -28,7 +28,7 @@ while ((letrasParaDescobrir > 0) and (tentativasRestantes > 0)):
    # a letra digitada já havia sido encontrada?
    letraJaFoi = False
    i = 0
-   while (not letraJaFoi and i < len(palavraEscondida)):
+   while ((not letraJaFoi) and (i < len(palavraEscondida))):
       if (palavraEscondida[i] == letraPalpite):
          print(f"A letra '{letraPalpite}' já foi encontrada na palavra!")
          letraJaFoi = True

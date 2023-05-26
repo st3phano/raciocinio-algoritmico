@@ -19,6 +19,7 @@ def imprimirTabuleiro(tabuleiro: list, tamanhoTabuleiro: int) -> None:
       print(" ---" * tamanhoTabuleiro)
    print()
 
+
 def requisitarLinhaColuna(tamanhoTabuleiro: int, pecaJogador: str) -> tuple[int, int]:
    REGEX_JOGADA = fr"\s*[0-{tamanhoTabuleiro - 1}]\s+[0-{tamanhoTabuleiro - 1}]\s*"
 

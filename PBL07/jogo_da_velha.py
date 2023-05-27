@@ -8,7 +8,11 @@ def imprimirTabuleiro(tabuleiro: list, tamanhoTabuleiro: int) -> None:
    print()
    # imprime índices das colunas
    for iColuna in range(tamanhoTabuleiro):
-      print(f"  {iColuna} ", end='')
+      if (iColuna < 10):
+         coluna = f"  {iColuna} "
+      else:
+         coluna = f"  {iColuna}"
+      print(coluna, end='')
    print()
 
    print(" ---" * tamanhoTabuleiro)
@@ -20,26 +24,27 @@ def imprimirTabuleiro(tabuleiro: list, tamanhoTabuleiro: int) -> None:
    print()
 
 
-def requisitarLinhaColuna(tamanhoTabuleiro: int, pecaJogador: str) -> tuple[int, int]:
-   REGEX_JOGADA = fr"\s*[0-{tamanhoTabuleiro - 1}]\s+[0-{tamanhoTabuleiro - 1}]\s*"
+def requisitarLinhaColuna(pecaJogador: str) -> tuple[int, int]:
+   REGEX_JOGADA = r"\s*\d+\s+\d+\s*"
 
-   jogada = input(f"Jogador '{pecaJogador}' digite o índice da linha e da coluna desejados (L C): ")
+   jogada = input(f"Jogador '{pecaJogador}' digite os índices da linha e da coluna desejados (L C): ")
    while (re.fullmatch(REGEX_JOGADA, jogada) == None):
-      jogada = input("Por favor, digite índices válidos no formato 'L C': ")
+      jogada = input("Por favor, digite índices no formato (L C): ")
 
    # converte a string digitada em tupla(LINHA, COLUNA)
    return tuple(int(x) for x in jogada.split())
 
 
-def linhaColunaValida(tabuleiro: list, espacoVazio: str, linhaColuna: tuple[int, int]) -> bool:
+def linhaColunaValida(tabuleiro: list, tamanhoTabuleiro: int, espacoVazio: str, linhaColuna: tuple[int, int]) -> bool:
    LINHA, COLUNA = linhaColuna
-   return (tabuleiro[LINHA][COLUNA] == espacoVazio)
+
+   return (LINHA < tamanhoTabuleiro) and (COLUNA < tamanhoTabuleiro) and (tabuleiro[LINHA][COLUNA] == espacoVazio)
 
 
 def requisitarJogada(tabuleiro: list, tamanhoTabuleiro: int, espacoVazio: str, pecaJogador: str) -> tuple[int, int]:
-   while (not linhaColunaValida(tabuleiro, espacoVazio,
-          jogada := requisitarLinhaColuna(tamanhoTabuleiro, pecaJogador))):
-      print("Esse espaço não está vazio!")
+   while (not linhaColunaValida(tabuleiro, tamanhoTabuleiro, espacoVazio,
+          jogada := requisitarLinhaColuna(pecaJogador))):
+      print("Jogada inválida!")
 
    return jogada
 
@@ -75,11 +80,11 @@ def ganhouJogo(tabuleiro: list, tamanhoTabuleiro: int, jogada: tuple[int, int], 
 
 ###################################################################################################
 
-TAMANHO_TABULEIRO = 4
+TAMANHO_TABULEIRO = 6
 ESPACO_VAZIO = ' '
 tabuleiro = [[ESPACO_VAZIO] * TAMANHO_TABULEIRO for _ in range(TAMANHO_TABULEIRO)]
 
-PECA_JOGADORES = ('X', 'O')
+PECA_JOGADORES = ('X', 'O', 'Y')
 NUMERO_JOGADORES = len(PECA_JOGADORES)
 print("--- Jogo da Velha ---")
 for i in range(NUMERO_JOGADORES):

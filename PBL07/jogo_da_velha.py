@@ -69,10 +69,10 @@ def ganhouJogo(tabuleiro: list, tamanhoTabuleiro: int, jogada: tuple[int, int], 
 
    if (ganhouNaLinha(tabuleiro[LINHA_JOGADA], pecaJogador)):
       return True
-   
+
    if (ganhouNaColuna(tabuleiro, COLUNA_JOGADA, pecaJogador)):
       return True
-   
+
    if (ganhouNaDiagonal(tabuleiro, tamanhoTabuleiro, pecaJogador)):
       return True
 

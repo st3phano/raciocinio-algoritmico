@@ -8,7 +8,11 @@ def imprimirTabuleiro(tabuleiro: list, tamanhoTabuleiro: int) -> None:
    print()
    # imprime índices das colunas
    for iColuna in range(tamanhoTabuleiro):
-      print(f"  {iColuna} ", end='')
+      if (iColuna < 10):
+         coluna = f"  {iColuna} "
+      else:
+         coluna = f"  {iColuna}"
+      print(coluna, end='')
    print()
 
    print(" ---" * tamanhoTabuleiro)
@@ -19,26 +23,28 @@ def imprimirTabuleiro(tabuleiro: list, tamanhoTabuleiro: int) -> None:
       print(" ---" * tamanhoTabuleiro)
    print()
 
-def requisitarLinhaColuna(tamanhoTabuleiro: int, pecaJogador: str) -> tuple[int, int]:
-   REGEX_JOGADA = fr"\s*[0-{tamanhoTabuleiro - 1}]\s+[0-{tamanhoTabuleiro - 1}]\s*"
 
-   jogada = input(f"Jogador '{pecaJogador}' digite o índice da linha e da coluna desejados (L C): ")
+def requisitarLinhaColuna(pecaJogador: str) -> tuple[int, int]:
+   REGEX_JOGADA = r"\s*\d+\s+\d+\s*"
+
+   jogada = input(f"Jogador '{pecaJogador}' digite os índices da linha e da coluna desejados (L C): ")
    while (re.fullmatch(REGEX_JOGADA, jogada) == None):
-      jogada = input("Por favor, digite índices válidos no formato 'L C': ")
+      jogada = input("Por favor, digite índices no formato (L C): ")
 
    # converte a string digitada em tupla(LINHA, COLUNA)
    return tuple(int(x) for x in jogada.split())
 
 
-def linhaColunaValida(tabuleiro: list, espacoVazio: str, linhaColuna: tuple[int, int]) -> bool:
-   linha, coluna = linhaColuna
-   return (tabuleiro[linha][coluna] == espacoVazio)
+def linhaColunaValida(tabuleiro: list, tamanhoTabuleiro: int, espacoVazio: str, linhaColuna: tuple[int, int]) -> bool:
+   LINHA, COLUNA = linhaColuna
+
+   return (LINHA < tamanhoTabuleiro) and (COLUNA < tamanhoTabuleiro) and (tabuleiro[LINHA][COLUNA] == espacoVazio)
 
 
 def requisitarJogada(tabuleiro: list, tamanhoTabuleiro: int, espacoVazio: str, pecaJogador: str) -> tuple[int, int]:
-   while (not linhaColunaValida(tabuleiro, espacoVazio,
-          jogada := requisitarLinhaColuna(tamanhoTabuleiro, pecaJogador))):
-      print("Essa jogada é inválida!")
+   while (not linhaColunaValida(tabuleiro, tamanhoTabuleiro, espacoVazio,
+          jogada := requisitarLinhaColuna(pecaJogador))):
+      print("Jogada inválida!")
 
    return jogada
 
@@ -63,41 +69,47 @@ def ganhouJogo(tabuleiro: list, tamanhoTabuleiro: int, jogada: tuple[int, int], 
 
    if (ganhouNaLinha(tabuleiro[LINHA_JOGADA], pecaJogador)):
       return True
-   
+
    if (ganhouNaColuna(tabuleiro, COLUNA_JOGADA, pecaJogador)):
       return True
-   
+
    if (ganhouNaDiagonal(tabuleiro, tamanhoTabuleiro, pecaJogador)):
       return True
 
    return False
 
+###################################################################################################
 
-###############################################################################
-
-
-TAMANHO_TABULEIRO = 4
+TAMANHO_TABULEIRO = 6
 ESPACO_VAZIO = ' '
 tabuleiro = [[ESPACO_VAZIO] * TAMANHO_TABULEIRO for _ in range(TAMANHO_TABULEIRO)]
 
-PECA_JOGADORES = ('X', 'O')
+PECA_JOGADORES = ('X', 'O', 'Y')
+NUMERO_JOGADORES = len(PECA_JOGADORES)
 print("--- Jogo da Velha ---")
-for i in range(len(PECA_JOGADORES)):
+for i in range(NUMERO_JOGADORES):
    print(f"[-] Peça jogador {i + 1}: {PECA_JOGADORES[i]}")
 imprimirTabuleiro(tabuleiro, TAMANHO_TABULEIRO)
 
+jogador = 0
 jogadorGanhador = -1
-while (jogadorGanhador == -1):
-   jogadas = [None] * len(PECA_JOGADORES)
+espacosRestantes = TAMANHO_TABULEIRO ** 2
+while ((jogadorGanhador == -1) and (espacosRestantes > 0)):
+   jogada = requisitarJogada(tabuleiro, TAMANHO_TABULEIRO, ESPACO_VAZIO, PECA_JOGADORES[jogador])
+   linha, coluna = jogada
+   tabuleiro[linha][coluna] = PECA_JOGADORES[jogador]
+   espacosRestantes -= 1
 
-   for jogador in range(len(PECA_JOGADORES)):
-      jogadas[jogador] = requisitarJogada(tabuleiro, TAMANHO_TABULEIRO, ESPACO_VAZIO, PECA_JOGADORES[jogador])
-      linha, coluna = jogadas[jogador]
-      tabuleiro[linha][coluna] = PECA_JOGADORES[jogador]
-      imprimirTabuleiro(tabuleiro, TAMANHO_TABULEIRO)
+   imprimirTabuleiro(tabuleiro, TAMANHO_TABULEIRO)
 
-      if (ganhouJogo(tabuleiro, TAMANHO_TABULEIRO, jogadas[jogador], PECA_JOGADORES[jogador])):
-         jogadorGanhador = jogador
-         break
+   if (ganhouJogo(tabuleiro, TAMANHO_TABULEIRO, jogada, PECA_JOGADORES[jogador])):
+      jogadorGanhador = jogador
+   elif (jogador + 1 == NUMERO_JOGADORES):
+      jogador = 0
+   else:
+      jogador += 1
 
-print(f"O jogador '{PECA_JOGADORES[jogadorGanhador]}' ganhou o jogo!")
+if (jogadorGanhador == -1):
+   print("Empate!")
+else:
+   print(f"O jogador '{PECA_JOGADORES[jogadorGanhador]}' ganhou!")

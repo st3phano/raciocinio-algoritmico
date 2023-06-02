@@ -26,15 +26,15 @@ while ((letrasParaDescobrir > 0) and (tentativasRestantes > 0)):
    letraPalpite = letraPalpite.lower()
 
    # a letra digitada já havia sido encontrada?
-   letraJaFoi = False
+   letraJaFoiEncontrada = False
    i = 0
-   while ((not letraJaFoi) and (i < len(palavraEscondida))):
+   while ((not letraJaFoiEncontrada) and (i < len(palavraEscondida))):
       if (palavraEscondida[i] == letraPalpite):
          print(f"A letra '{letraPalpite}' já foi encontrada na palavra!")
-         letraJaFoi = True
+         letraJaFoiEncontrada = True
       i += 1
 
-   if (not letraJaFoi):
+   if (not letraJaFoiEncontrada):
       # a letra digitada pertence a palavra escondida?
       letraEncontrada = False
       for i in range(len(palavraSorteada)):

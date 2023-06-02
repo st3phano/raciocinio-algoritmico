@@ -5,9 +5,9 @@ class ConsoleColorido:
    RESET= "\033[0m"
 
    @staticmethod
-   def textoNegrito(texto: str) -> str:
+   def negrito(texto: str) -> str:
       return ConsoleColorido.BOLD_TEXT + texto + ConsoleColorido.RESET
    
    @staticmethod
-   def textoNegrito(inteiro: int) -> str:
+   def negrito(inteiro: int) -> str:
       return ConsoleColorido.BOLD_TEXT + str(inteiro) + ConsoleColorido.RESET

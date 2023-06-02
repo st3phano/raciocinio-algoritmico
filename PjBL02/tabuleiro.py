@@ -9,12 +9,15 @@ class Tabuleiro:
    SEPARADOR_COLUNAS = '|'
 
 
-   def __init__(self, linhas: int, colunas: int, embarcacoes: int):
+   def __init__(self, linhas: int, colunas: int):
       self._linhas = linhas
       self._colunas = colunas
-      self._embarcacoes = embarcacoes
 
       self._tabuleiro = [[Tabuleiro.CARACTERE_AGUA] * colunas for linha in range(linhas)]
+
+
+   def __getitem__(self, linha: int) -> list[str]:
+         return self._tabuleiro[linha]
 
 
    @property
@@ -25,16 +28,6 @@ class Tabuleiro:
    @property
    def colunas(self) -> int:
       return self._colunas
-
-
-   @property
-   def embarcacoes(self) -> int:
-      return self._embarcacoes
-
-
-   @property
-   def tabuleiro(self) -> list[str, str]:
-      return self._tabuleiro
 
 
    def _imprimirIndentacao(self) -> None:
@@ -61,18 +54,9 @@ class Tabuleiro:
 
       for l in range(self.linhas):
          print(f"{l} ", end='') # imprime o índice da linha
-         for coluna in self.tabuleiro[l]:
+         for coluna in self[l]:
             print(f"{Tabuleiro.SEPARADOR_COLUNAS} {coluna} ", end='')
          print(f"{Tabuleiro.SEPARADOR_COLUNAS} {l}") # imprime o índice da linha
          self._imprimirSeparadorLinhas()
 
       self._imprimirIndiceColunas()
-
-
-   def posicionarEmbarcacao(self, linha: int, coluna: int) -> bool:
-      if (self.tabuleiro[linha][coluna] == Tabuleiro.CARACTERE_AGUA):
-         self.tabuleiro[linha][coluna] = Tabuleiro.CARACTERE_EMBARCACAO
-         return True
-
-      return False
-

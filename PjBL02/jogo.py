@@ -22,30 +22,18 @@ class Jogo:
       return self._humano
 
 
-   def requisitarLinhaColuna(self) -> tuple[int, int]:
-      linhaColuna = input("Entre com a linha e coluna desejada (L C): ")
-
-      REGEX_LINHA_COLUNA = r"\s*\d+\s+\d+\s*"
-      while (re.fullmatch(REGEX_LINHA_COLUNA, linhaColuna) == None):
-         linhaColuna = input("Entrada inválida! Siga o formato (L C): ")
-
-      return tuple(int(x) for x in linhaColuna.split())
-
-
    def executar(self) -> None:
-      print(ConsoleColorido.textoNegrito("\n\t--- BATALHA NAVAL ---\n\n"))
-
       vencedor = None
       while (vencedor == None):
-         print("Tabuleiro do " + ConsoleColorido.textoNegrito("COMPUTADOR:"))
+         print("Tabuleiro do " + ConsoleColorido.negrito("COMPUTADOR:"))
          self.computador.tabuleiro.imprimir()
          print("Embarcações restantes: "
-               f"{ConsoleColorido.textoNegrito(self.computador.tabuleiro.embarcacoes)}\n")
+               f"{ConsoleColorido.negrito(self.computador.tabuleiro.embarcacoes)}\n")
 
-         print("Tabuleiro do " + ConsoleColorido.textoNegrito("HUMANO:"))
+         print("Tabuleiro do " + ConsoleColorido.negrito("HUMANO:"))
          self.humano.tabuleiro.imprimir()
          print("Embarcações restantes: "
-               f"{ConsoleColorido.textoNegrito(self.humano.tabuleiro.embarcacoes)}\n")
+               f"{ConsoleColorido.negrito(self.humano.tabuleiro.embarcacoes)}\n")
 
          vencedor = 'a'
 

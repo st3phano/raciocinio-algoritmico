@@ -5,11 +5,11 @@ Escreva uma função chamada "imprime_diagonal" que recebe uma matriz de tamanho
 
 def imprimirDiagonal(matriz: list[list[float]]) -> None:
    LINHAS = len(matriz)
-   if (LINHAS < 1):
+   if (LINHAS == 0):
       return
 
    COLUNAS = len(matriz[0])
-   if (COLUNAS < 1 or LINHAS != COLUNAS):
+   if ((COLUNAS == 0) or (LINHAS != COLUNAS)):
       return
 
    for i in range(LINHAS):
@@ -19,7 +19,8 @@ def imprimirDiagonal(matriz: list[list[float]]) -> None:
 from random import randint
 
 TAMANHO_MATRIZ = 3
-matriz = [[[randint(TAMANHO_MATRIZ - linha, TAMANHO_MATRIZ + coluna)] for coluna in range(TAMANHO_MATRIZ)]
+matriz = [[randint(linha - 10, coluna + 10)
+           for coluna in range(TAMANHO_MATRIZ)]
           for linha in range(TAMANHO_MATRIZ)]
 
 imprimirDiagonal(matriz)

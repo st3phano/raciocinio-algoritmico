@@ -6,8 +6,8 @@ from console_colorido import ConsoleColorido
 
 from time import sleep
 
-LINHAS = 3
-COLUNAS = 3
+LINHAS = 5
+COLUNAS = 10
 EMBARCACOES = 5
 
 print(ConsoleColorido.textoNegritoAzul("--- BATALHA NAVAL ---\n"))

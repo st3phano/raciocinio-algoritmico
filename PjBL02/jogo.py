@@ -5,8 +5,6 @@ from console_colorido import ConsoleColorido
 import re
 
 class Jogo:
-
-
    def __init__(self, computador: Jogador, humano: Jogador):
       self._computador = computador
       self._humano = humano
@@ -25,15 +23,15 @@ class Jogo:
    def executar(self) -> None:
       vencedor = None
       while (vencedor == None):
-         print("Tabuleiro do " + ConsoleColorido.negrito("COMPUTADOR:"))
+         print("\nTabuleiro do " + ConsoleColorido.textoNegritoVermelho("COMPUTADOR:"))
          self.computador.tabuleiro.imprimir()
          print("Embarcações restantes: "
-               f"{ConsoleColorido.negrito(self.computador.tabuleiro.embarcacoes)}\n")
+               f"{ConsoleColorido.textoNegritoAmarelo(str(self.computador.embarcacoes))}\n")
 
-         print("Tabuleiro do " + ConsoleColorido.negrito("HUMANO:"))
+         print("\nTabuleiro do " + ConsoleColorido.textoNegritoAzul("HUMANO:"))
          self.humano.tabuleiro.imprimir()
          print("Embarcações restantes: "
-               f"{ConsoleColorido.negrito(self.humano.tabuleiro.embarcacoes)}\n")
+               f"{ConsoleColorido.textoNegritoAmarelo(str(self.humano.embarcacoes))}\n")
 
          vencedor = 'a'
 

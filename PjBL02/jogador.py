@@ -1,14 +1,16 @@
 from console_colorido import ConsoleColorido
 from tabuleiro import Tabuleiro
 
+from abc import ABC, abstractmethod
+import random
 import re
 
-class Jogador:
+class Jogador(ABC):
    def __init__(self, tabuleiro: Tabuleiro, embarcacoes: int):
       self._tabuleiro = tabuleiro
       self._embarcacoes = embarcacoes
 
-      self._linhaColunaEmbarcacoes = [None] * embarcacoes
+      self._linhaColunaEmbarcacoes = set()
 
 
    @property
@@ -22,57 +24,50 @@ class Jogador:
 
 
    @property
-   def linhaColunaEmbarcacoes(self) -> list[tuple[int, int]]:
+   def linhaColunaEmbarcacoes(self) -> set[tuple[int, int]]:
       return self._linhaColunaEmbarcacoes
 
 
+   @abstractmethod
    def posicionarEmbarcacoes(self) -> None:
       pass
 
 
 
 class Computador(Jogador):
-   pass
+   def posicionarEmbarcacoes(self) -> None:
+      while (len(self.linhaColunaEmbarcacoes) < 5):
+         linha = random.randrange(0, self.tabuleiro.linhas)
+         coluna = random.randrange(0, self.tabuleiro.colunas)
+         self.linhaColunaEmbarcacoes.add((linha, coluna))
+      print(self.linhaColunaEmbarcacoes)
 
 
 
 class Humano(Jogador):
-   def _posicionarEmbarcacao(self, linhaColuna: tuple[int, int]) -> bool:
-      linha, coluna = linhaColuna
-      LINHAS = self.tabuleiro.linhas
-      COLUNAS = self.tabuleiro.colunas
-      if ((linha < 0 or linha >= LINHAS) or (coluna < 0 or coluna >= COLUNAS)):
-         return False
-
-      if (self.tabuleiro[linha][coluna] != Tabuleiro.CARACTERE_AGUA):
-         return False
-
-      self.tabuleiro[linha][coluna] = Tabuleiro.CARACTERE_EMBARCACAO
-      return True
-
-
    def _requisitarLinhaColuna(self) -> tuple[int, int]:
-      linhaColuna = input("Digite a LINHA e a COLUNA (L C): ")
-
       REGEX_LINHA_COLUNA = r"\s*\d+\s+\d+\s*"
-      while (re.fullmatch(REGEX_LINHA_COLUNA, linhaColuna) == None):
-         linhaColuna = input("Entrada inválida! Siga o formato (L C): ")
+      while (not re.fullmatch(REGEX_LINHA_COLUNA,
+                              linhaColuna := input("Digite a LINHA e a COLUNA (L C): "))):
+         print(ConsoleColorido.textoVermelho("Entrada inválida!"))
 
       return tuple(int(x) for x in linhaColuna.split())
 
 
    def posicionarEmbarcacoes(self) -> None:
-      print(ConsoleColorido.negrito("\n--- BATALHA NAVAL ---\n"))
+      tabuleiroTemporario = Tabuleiro(self.tabuleiro.linhas, self.tabuleiro.colunas)
 
-      for i in range(len(self.linhaColunaEmbarcacoes)):
-         print(f"\nPosicionando a {ConsoleColorido.negrito(str(i + 1) + 'a')} embarcação...\n")
-         self.tabuleiro.imprimir()
+      for i in range(self.embarcacoes):
+         print()
+         tabuleiroTemporario.imprimir()
          print()
 
-         while (not self._posicionarEmbarcacao(
-                    self._requisitarLinhaColuna())):
-            print("Posição inválida!")
+         print(ConsoleColorido.textoNegritoAzul(f"Posicionando a {i + 1}a embarcação..."))
+         while (not tabuleiroTemporario.posicionarEmbarcacao(linhaColuna := self._requisitarLinhaColuna())):
+            print(ConsoleColorido.textoVermelho("Posição inválida!"))
 
+         self.linhaColunaEmbarcacoes.add(linhaColuna)
 
-
-
+      print()
+      tabuleiroTemporario.imprimir()
+      print()

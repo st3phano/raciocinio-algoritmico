@@ -5,7 +5,7 @@ Leia uma matriz 4 x 4, conte e escreva quantos valores maiores que 10 ela possui
 import re
 
 def lerNumeroReal(requisicao: str) -> float:
-   REGEX_REAL = r"[-+]?\d*\.?\d+"
+   REGEX_REAL = r"\s*[-+]?\d*\.?\d+\s*"
 
    while (not re.fullmatch(REGEX_REAL,
                            real := input(requisicao))):

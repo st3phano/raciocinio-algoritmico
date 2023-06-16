@@ -6,7 +6,7 @@ ser impresso o maior e o menor elemento do vetor.
 import re
 
 def lerNumeroReal(requisicao: str) -> float:
-   REGEX_REAL = r"[-+]?\d*\.?\d+"
+   REGEX_REAL = r"\s*[-+]?\d*\.?\d+\s*"
 
    while (not re.fullmatch(REGEX_REAL,
                            real := input(requisicao))):

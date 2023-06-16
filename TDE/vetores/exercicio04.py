@@ -7,7 +7,7 @@ devera escrever a soma dos valores encontrados nas respectivas posições X e Y.
 import re
 
 def lerNumeroReal(requisicao: str) -> float:
-   REGEX_REAL = r"[-+]?\d*\.?\d+"
+   REGEX_REAL = r"\s*[-+]?\d*\.?\d+\s*"
 
    while (not re.fullmatch(REGEX_REAL,
                            real := input(requisicao))):
@@ -16,7 +16,7 @@ def lerNumeroReal(requisicao: str) -> float:
    return float(real)
 
 def lerNumeroInteiro(requisicao: str) -> int:
-   REGEX_INTEIRO = r"[-+]?\d+"
+   REGEX_INTEIRO = r"\s*[-+]?\d+\s*"
 
    while (not re.fullmatch(REGEX_INTEIRO,
                            inteiro := input(requisicao))):

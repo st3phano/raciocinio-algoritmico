@@ -5,7 +5,7 @@ Leia um vetor de 10 posições. Contar e escrever quantos valores pares ele poss
 import re
 
 def lerNumeroInteiro(requisicao: str) -> int:
-   REGEX_INTEIRO = r"[-+]?\d+"
+   REGEX_INTEIRO = r"\s*[-+]?\d+\s*"
 
    while (not re.fullmatch(REGEX_INTEIRO,
                            inteiro := input(requisicao))):

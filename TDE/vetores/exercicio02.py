@@ -5,7 +5,7 @@ Crie um programa que le 6 valores inteiros e, em seguida, mostre na tela os valo
 import re
 
 def lerNumeroInteiro(requisicao: str) -> int:
-   REGEX_INTEIRO = r"[-+]?\d+"
+   REGEX_INTEIRO = r"\s*[-+]?\d+\s*"
 
    while (not re.fullmatch(REGEX_INTEIRO,
                            inteiro := input(requisicao))):

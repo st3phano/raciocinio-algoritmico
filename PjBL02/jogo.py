@@ -2,6 +2,7 @@ from jogador import Jogador
 from tabuleiro import Tabuleiro
 from console_colorido import ConsoleColorido
 
+from time import sleep
 import re
 
 class Jogo:
@@ -20,18 +21,39 @@ class Jogo:
       return self._humano
 
 
-   def executar(self) -> None:
-      vencedor = None
-      while (vencedor == None):
-         print("\nTabuleiro do " + ConsoleColorido.textoNegritoVermelho("COMPUTADOR:"))
+   def _imprimirTabuleiros(self) -> None:
+         print("\nTabuleiro do " + ConsoleColorido.textoNegritoAmarelo("COMPUTADOR:"))
          self.computador.tabuleiro.imprimir()
-         print("Embarcações restantes: "
-               f"{ConsoleColorido.textoNegritoAmarelo(str(self.computador.embarcacoes))}\n")
+         print(f"Embarcações restantes: {self.computador.embarcacoes}\n")
 
-         print("\nTabuleiro do " + ConsoleColorido.textoNegritoAzul("HUMANO:"))
+         print("Tabuleiro do " + ConsoleColorido.textoNegritoAzul("HUMANO:"))
          self.humano.tabuleiro.imprimir()
-         print("Embarcações restantes: "
-               f"{ConsoleColorido.textoNegritoAmarelo(str(self.humano.embarcacoes))}\n")
+         print(f"Embarcações restantes: {self.humano.embarcacoes}\n")
 
-         vencedor = 'a'
 
+   def executar(self) -> None:
+      while ((self.computador.embarcacoes > 0) and (self.humano.embarcacoes > 0)):
+         print("\nTabuleiro do " + ConsoleColorido.textoNegritoAmarelo("COMPUTADOR:"))
+         self.computador.tabuleiro.imprimir()
+         print(f"Embarcações restantes: {self.computador.embarcacoes}\n")
+         sleep(2)
+
+         self.humano.atacar(self.computador)
+         sleep(2)
+
+         print("Tabuleiro do " + ConsoleColorido.textoNegritoAzul("HUMANO:"))
+         self.humano.tabuleiro.imprimir()
+         print(f"Embarcações restantes: {self.humano.embarcacoes}\n")
+         sleep(2)
+
+         self.computador.atacar(self.humano)
+         sleep(2)
+
+      self._imprimirTabuleiros()
+      sleep(2)
+      if (self.computador.embarcacoes == 0):
+         print("Parabéns! Você afundou todas as embarcações do inimigo!")
+         if (self.humano.embarcacoes == 0):
+            print("Porém também perdeu todas as suas embarcações...")
+      else:
+         print("Que pena, parece que você perdeu.")

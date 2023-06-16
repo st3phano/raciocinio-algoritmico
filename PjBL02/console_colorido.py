@@ -1,5 +1,6 @@
 class ConsoleColorido:
    RED_TEXT = "\033[31m"
+   GREEN_TEXT = "\033[32m"
    YELLOW_TEXT = "\033[33m"
    BLUE_TEXT = "\033[34m"
    BOLD_TEXT = "\033[1m"
@@ -23,6 +24,11 @@ class ConsoleColorido:
    @staticmethod
    def textoVermelho(texto: str) -> str:
       return ConsoleColorido.RED_TEXT + texto + ConsoleColorido.RESET
+
+
+   @staticmethod
+   def textoVerde(texto: str) -> str:
+      return ConsoleColorido.GREEN_TEXT + texto + ConsoleColorido.RESET
 
 
    @staticmethod

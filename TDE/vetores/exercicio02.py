@@ -4,7 +4,7 @@ Crie um programa que le 6 valores inteiros e, em seguida, mostre na tela os valo
 
 import re
 
-def lerInteiro(requisicao: str) -> int:
+def lerNumeroInteiro(requisicao: str) -> int:
    REGEX_INTEIRO = r"[-+]?\d+"
 
    while (not re.fullmatch(REGEX_INTEIRO,
@@ -18,7 +18,7 @@ def lerInteiro(requisicao: str) -> int:
 TAMANHO_INTEIROS = 6
 inteiros = [0] * TAMANHO_INTEIROS
 for i in range(TAMANHO_INTEIROS):
-   inteiros[i] = lerInteiro(f"Digite o {i + 1}o inteiro: ")
+   inteiros[i] = lerNumeroInteiro(f"Digite o {i + 1}o número inteiro: ")
 
 for i in range(TAMANHO_INTEIROS):
-   print(f"{i + 1}o inteiro: {inteiros[i]}")
+   print(f"{i + 1}o número inteiro: {inteiros[i]}")

@@ -15,7 +15,7 @@ def lerNumeroReal(requisicao: str) -> float:
 
    return float(real)
 
-def lerInteiro(requisicao: str) -> int:
+def lerNumeroInteiro(requisicao: str) -> int:
    REGEX_INTEIRO = r"[-+]?\d+"
 
    while (not re.fullmatch(REGEX_INTEIRO,
@@ -24,8 +24,8 @@ def lerInteiro(requisicao: str) -> int:
 
    return int(inteiro)
 
-def lerInteiroNoIntervalo(requisicao: str, inicio: int, final: int) -> int:
-   while ((inteiro := lerInteiro(requisicao)) and
+def lerNumeroInteiroNoIntervalo(requisicao: str, inicio: int, final: int) -> int:
+   while ((inteiro := lerNumeroInteiro(requisicao)) and
           ((inteiro < inicio) or (final <= inteiro))):
       print(f"'{inteiro}' não está no intervalo entre [{inicio} e {final})")
 
@@ -38,7 +38,7 @@ reais = list()
 for i in range(TAMANHO_REAIS):
    reais.append(lerNumeroReal(f"Digite o {i + 1}o número real: "))
 
-x = lerInteiroNoIntervalo(f"Digite um inteiro entre [0 e {TAMANHO_REAIS}): ", 0, TAMANHO_REAIS)
-y = lerInteiroNoIntervalo(f"Digite outro inteiro entre [0 e {TAMANHO_REAIS}): ", 0, TAMANHO_REAIS)
+x = lerNumeroInteiroNoIntervalo(f"Digite um número inteiro entre [0 e {TAMANHO_REAIS}): ", 0, TAMANHO_REAIS)
+y = lerNumeroInteiroNoIntervalo(f"Digite outro número inteiro entre [0 e {TAMANHO_REAIS}): ", 0, TAMANHO_REAIS)
 soma = reais[x] + reais[y]
 print(f"{x}o: {reais[x]} + {y}o: {reais[y]} = {soma}")

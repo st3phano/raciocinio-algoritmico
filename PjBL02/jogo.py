@@ -1,21 +1,21 @@
-from jogador import Jogador
+from jogador import Computador, Humano
 from console_colorido import ConsoleColorido
 
 from time import sleep
 
 class Jogo:
-   def __init__(self, computador: Jogador, humano: Jogador):
+   def __init__(self, computador: Computador, humano: Humano):
       self._computador = computador
       self._humano = humano
 
 
    @property
-   def computador(self) -> Jogador:
+   def computador(self) -> Computador:
       return self._computador
 
 
    @property
-   def humano(self) -> Jogador:
+   def humano(self) -> Humano:
       return self._humano
 
 

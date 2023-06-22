@@ -28,7 +28,7 @@ class Tabuleiro:
 
 
    def __getitem__(self, linha: int) -> list[str]:
-         return self._tabuleiro[linha]
+      return self._tabuleiro[linha]
 
 
    @property

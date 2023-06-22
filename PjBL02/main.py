@@ -1,3 +1,12 @@
+'''
+Batalha Naval é um jogo de tabuleiro de lápis e papel do qual participam dois jogadores. O objetivo do jogo
+é afundar a tropa de navios do inimigo. Antes de iniciar o jogo, os jogadores posicionam a sua frota em seu
+tabuleiro, sem revelar ao adversário tal posicionamento. As jogadas são feitas de forma alternada.
+Quando da sua vez, o jogador “atira” em uma posição do tabuleiro do adversário indicando suas
+coordenadas (linha e coluna). O jogo deve então informar se o tiro acertou algo ou não.
+Ganha o jogo quem afundar primeiro a frota do adversário.
+'''
+
 from jogo import Jogo
 from jogador import Computador
 from jogador import Humano

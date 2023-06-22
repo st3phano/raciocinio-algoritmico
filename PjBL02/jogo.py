@@ -1,9 +1,7 @@
 from jogador import Jogador
-from tabuleiro import Tabuleiro
 from console_colorido import ConsoleColorido
 
 from time import sleep
-import re
 
 class Jogo:
    def __init__(self, computador: Jogador, humano: Jogador):
@@ -32,20 +30,22 @@ class Jogo:
 
 
    def executar(self) -> None:
+      rodada = 1
       while ((self.computador.embarcacoes > 0) and (self.humano.embarcacoes > 0)):
-         print("\nTabuleiro do " + ConsoleColorido.textoNegritoAmarelo("COMPUTADOR:"))
+         print(ConsoleColorido.textoNegrito("\n" + str(rodada) + "a RODADA"))
+         rodada += 1
+
+         print("Tabuleiro do " + ConsoleColorido.textoNegritoAmarelo("COMPUTADOR:"))
          self.computador.tabuleiro.imprimir()
          print(f"Embarcações restantes: {self.computador.embarcacoes}\n")
-         sleep(2)
-
+         sleep(1)
          self.humano.atacar(self.computador)
          sleep(2)
 
          print("Tabuleiro do " + ConsoleColorido.textoNegritoAzul("HUMANO:"))
          self.humano.tabuleiro.imprimir()
          print(f"Embarcações restantes: {self.humano.embarcacoes}\n")
-         sleep(2)
-
+         sleep(1)
          self.computador.atacar(self.humano)
          sleep(2)
 

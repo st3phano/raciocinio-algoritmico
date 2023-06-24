@@ -69,8 +69,8 @@ class Computador(Jogador):
 
 
    def atacar(self, inimigo: Jogador) -> None:
-      while ((linhaColuna := self._sortearPosicao()) and
-             (inimigo.tabuleiro.em(linhaColuna) != Tabuleiro.DESENHO_AGUA)):
+      while (inimigo.tabuleiro.em(
+             linhaColuna := self._sortearPosicao()) != Tabuleiro.DESENHO_AGUA):
          pass
 
       linha, coluna = linhaColuna
@@ -114,8 +114,8 @@ class Humano(Jogador):
          print()
 
          print(f"Posicionando a {i + 1}a embarcação...")
-         while ((linhaColuna := self._requisitarLinhaColuna()) and
-                (not self._posicionarEmbarcacao(tabuleiroTemporario, linhaColuna))):
+         while (not self._posicionarEmbarcacao(tabuleiroTemporario,
+                                               linhaColuna := self._requisitarLinhaColuna())):
             print(ConsoleColorido.textoVermelho("Posição inválida!"))
 
          self.linhaColunaEmbarcacoes.add(linhaColuna)
@@ -126,8 +126,8 @@ class Humano(Jogador):
 
 
    def atacar(self, inimigo: Jogador) -> None:
-      while ((linhaColuna := self._requisitarLinhaColuna()) and
-             (not inimigo.tabuleiro.posicaoValida(linhaColuna))):
+      while (not inimigo.tabuleiro.posicaoValida(
+             linhaColuna := self._requisitarLinhaColuna())):
          print(ConsoleColorido.textoVermelho("Posição inválida!"))
 
       super().atacar(inimigo, linhaColuna)
